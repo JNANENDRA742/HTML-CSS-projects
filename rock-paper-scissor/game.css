@@ -1,0 +1,187 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+/* Page background */
+body {
+    background: linear-gradient(135deg, #1d2671, #c33764);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+}
+/* Navbar */
+.navbar {
+    width: 100%;
+    padding: 15px 30px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffd700;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ffd700;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* Heading */
+h1 {
+    margin: 20px 0;
+    text-align: center;
+}
+
+/* Main container */
+.main-container {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    border-radius: 15px;
+    width: 340px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* Score section */
+.score-div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.score-div p {
+    font-size: 14px;
+}
+
+.score-div span {
+    font-weight: bold;
+    color: #ffd700;
+}
+
+/* Result section */
+.result-div {
+    background: rgba(0,0,0,0.25);
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.result-div p {
+    margin: 6px 0;
+    font-size: 14px;
+}
+
+/* Button layout → 2 rows × 2 columns */
+.button-div {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+/* Buttons */
+.button-div button {
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+/* Individual button colors */
+.button-div button:nth-child(1) {
+    background: #ff7675;
+}
+
+.button-div button:nth-child(2) {
+    background: #74b9ff;
+}
+
+.button-div button:nth-child(3) {
+    background: #55efc4;
+}
+
+.button-div button:nth-child(4) {
+    background: #fdcb6e;
+}
+
+/* Hover & active effects */
+.button-div button:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.button-div button:active {
+    transform: scale(0.97);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 400px) {
+    .main-container {
+        width: 90%;
+    }
+}
+
+
+/* Logout section */
+.logout-div {
+    margin-top: 18px;
+    text-align: center;
+}
+
+/* Logout button */
+.logout-div button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #d63031;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+/* Hover & active effects */
+.logout-div button:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+}
+
+.logout-div button:active {
+    transform: scale(0.97);
+}

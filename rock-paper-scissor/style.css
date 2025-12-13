@@ -1,0 +1,128 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Page background */
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* Navbar */
+.navbar {
+    width: 100%;
+    padding: 15px 30px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffd700;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ffd700;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* Auth box */
+.auth-box {
+    background: #ffffff;
+    width: 320px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+/* Title */
+.auth-box h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Inputs */
+.auth-box input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.auth-box input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+/* Buttons */
+.auth-box button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+/* Signup button */
+.auth-box button:first-of-type {
+    background: #667eea;
+    color: #fff;
+}
+
+.auth-box button:first-of-type:hover {
+    background: #5a67d8;
+}
+
+/* Login button */
+.auth-box button:last-of-type {
+    background: #e2e8f0;
+    color: #333;
+}
+
+.auth-box button:last-of-type:hover {
+    background: #cbd5e0;
+}
+
+/* Message */
+#message {
+    margin-top: 15px;
+    font-size: 14px;
+    color: red;
+}
