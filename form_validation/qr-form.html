@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="qr-form.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Form-Validation</title>
+</head>
+
+<body>
+    <button id="theme-toggle">
+        <i class="fa-solid fa-moon"></i>
+    </button>
+
+    <h1>User-Details</h1>
+
+    <form action="" method="post">
+        <div class="input-box">
+            <label for="name">Name: </label>
+            <input type="text" id="name" name="name" placeholder="Enter your Name : " >
+            <span class="error-name"></span>
+        </div>
+        <div class="input-box">
+            <label for="email">Email: </label>
+            <input type="email" id="email" name="email" placeholder="Enter your Email : " >
+            <span class="error-email"></span>
+        </div>
+        <div class="input-box">
+            <label for="password">Password: </label>
+            <input type="password" id="password" name="password" placeholder="Enter Password :" >
+            <!-- <span class="show-password"><i class="fa-solid fa-eye"></i></span>
+            <span class="show-password"><i class="fa-solid fa-eye-slash"></i></span> -->
+            <span id="toggle-password">
+                <i class="fa-solid fa-eye-slash"></i>
+            </span>
+            <span class="error-password"></span>
+        </div>
+        <div class="input-box">
+            <label for="phone">Phone: </label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your Phone Number : " >
+            <span class="error-phone"></span>
+        </div>
+        <button type="submit" id="submit-btn">Submit</button>
+    </form>
+    <div id="success-popup">
+        <img src="https://www.freeiconspng.com/uploads/success-icon-2.png" alt="success-icon">
+        <p id="success-message">Form submitted successfully!</p>
+        <div id="qr-code" class="qr-container"></div>
+
+
+        <button id="close-popup" >Close</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="qr-form.js"></script>
+
+
+</body>
+</html>
