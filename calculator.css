@@ -1,0 +1,221 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #525253;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+}
+
+main {
+    width: 90%;
+    max-width: 400px;
+}
+
+
+
+#calc-container {
+    width: 100%;
+    background-color: #f1f1f1;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+    border: 2px solid rgba(255, 255, 255, 1);
+}
+
+.result-container {
+    width: 100%;
+    min-height: 120px;
+    background-color: #393a3a;
+    border-radius: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 20px;
+    font-size: 48px;
+    color: white;
+    overflow: hidden;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    text-align: right;
+    word-break: break-all;
+    word-wrap: break-word;
+    font-weight: 300;
+}
+
+.btn-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.btn {
+    width: 100%;
+    aspect-ratio: 1/1;
+    background: linear-gradient(145deg, #e0e0e0, #c0c0c0);
+    border: none;
+    border-radius: 12px;
+    color: #333;
+    font-size: 24px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2),
+                -2px -2px 6px rgba(255, 255, 255, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.2),
+                -3px -3px 8px rgba(255, 255, 255, 0.7);
+}
+
+.btn:active {
+    transform: translateY(1px);
+    box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.2),
+                inset -2px -2px 4px rgba(255, 255, 255, 0.7);
+}
+
+/* Delete button */
+.btn:nth-child(4){
+   background: linear-gradient(145deg, #f1c40f, #f39c12);
+    color: white;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3),
+                -2px -2px 6px rgba(255, 255, 255, 0.1);
+}
+.btn:nth-child(4):hover {
+    background: linear-gradient(145deg, #f4d03f, #f1c40f);
+}
+
+/* Operator buttons (+, -, X, /) */
+.btn:nth-child(8),
+.btn:nth-child(12),
+.btn:nth-child(15),
+.btn:nth-child(18) {
+    background: linear-gradient(145deg, #3498db, #2980b9);
+    color: white;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3),
+                -2px -2px 6px rgba(255, 255, 255, 0.1);
+}
+
+.btn:nth-child(8):hover,
+.btn:nth-child(12):hover,
+.btn:nth-child(15):hover,
+.btn:nth-child(18):hover {
+    background: linear-gradient(145deg, #3cb0fd, #3498db);
+}
+
+/* Equal button */
+.btn:nth-child(17) {
+    background: linear-gradient(145deg, #27ae60, #219653);
+    color: white;
+    /* grid-column: span 2; */
+    /* aspect-ratio: auto; */
+    /* height: 70px; */
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3),
+                -2px -2px 6px rgba(255, 255, 255, 0.1);
+}
+
+.btn:nth-child(17):hover {
+    background: linear-gradient(145deg, #2ecc71, #27ae60);
+}
+
+/* Clear button */
+.btn.clear {
+    background: linear-gradient(145deg,#f34c4c, #e74c3c );
+    color: white;
+    grid-column: span 2;
+    aspect-ratio: auto;
+    height: auto;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3),
+                -2px -2px 6px rgba(255, 255, 255, 0.1);
+}
+
+.btn.clear:hover {
+    background: linear-gradient(145deg, #e74c3c, #c0392b);
+}
+
+/* Zero button */
+.btn:nth-child(14) {
+    grid-column: span 2;
+    aspect-ratio: auto;
+    height: auto;
+}
+
+
+/* Number buttons styling */
+.btn:not(.clear):not(:nth-child(8)):not(:nth-child(12)):not(:nth-child(15)):not(:nth-child(18)):not(:nth-child(17)):not(:nth-child(4)) {
+    background: linear-gradient(145deg, #ffffff, #e0e0e0);
+    color: #333;
+}
+
+/* Active state for all buttons */
+.btn:active {
+    filter: brightness(0.95);
+}
+
+
+/* Disabled state (for future use) */
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    
+    #calc-container {
+        padding: 15px;
+        gap: 15px;
+        border-radius: 12px;
+    }
+    
+    .result-container {
+        min-height: 100px;
+        font-size: 36px;
+        padding: 0 15px;
+        border-radius: 8px;
+    }
+    
+    .btn {
+        font-size: 20px;
+        border-radius: 10px;
+    }
+    
+    .btn:nth-child(14),
+    .btn:nth-child(16),
+    .btn:nth-child(17),
+    .btn.clear {
+        height: 60px;
+    }
+    
+    .btn-container {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 350px) {
+    .result-container {
+        font-size: 32px;
+        min-height: 90px;
+    }
+    
+    .btn {
+        font-size: 18px;
+    }
+}
