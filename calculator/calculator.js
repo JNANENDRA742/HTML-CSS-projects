@@ -11,6 +11,8 @@ let operation = null;
 let currentInput = '0';
 let previousInput = '';
 
+// ---------------- BUTTON EVENTS ----------------
+
 // Number buttons
 numButtons.forEach(button => {
     button.addEventListener("click", () => {
@@ -22,9 +24,10 @@ numButtons.forEach(button => {
 // Operator buttons
 operatorButtons.forEach(button => {
     button.addEventListener("click", () => {
+        if (currentInput === '') return;
         chooseOperation(button.textContent);
-        previousInput=currentInput;
-        currentInput='';
+        previousInput = currentInput;
+        currentInput = '';
         updateDisplay();
     });
 });
@@ -41,17 +44,12 @@ clearButton.addEventListener("click", clearCalculator);
 // Equal
 calculateButton.addEventListener("click", calculateResult);
 
-// delete
-del.addEventListener("click", () => {
-    currentInput = currentInput.slice(0, -1);
-    updateDisplay();
-});
-
+// Delete
+del.addEventListener("click", handleDelete);
 
 // ---------------- FUNCTIONS ----------------
 
 function appendNumber(number) {
-
     if (currentInput === '0') {
         currentInput = number;
     } else {
@@ -65,15 +63,10 @@ function appendDecimal() {
     }
 }
 
-
 function chooseOperation(operator) {
-
-    if (currentInput === '') return;
-
     if (previousInput !== '') {
         calculateResult();
     }
-
     operation = operator;
     previousInput = currentInput;
 }
@@ -97,7 +90,7 @@ function calculateResult() {
             break;
         case '/':
             if (current === 0) {
-                resultDisplay.textContent = "Math Error";
+                resultDisplay.textContent = "Infinity";
                 setTimeout(clearCalculator, 1200);
                 return;
             }
@@ -120,56 +113,72 @@ function clearCalculator() {
     updateDisplay();
 }
 
+function handleDelete() {
+    // Delete number
+    if (currentInput !== '' && currentInput !== '0') {
+        currentInput = currentInput.slice(0, -1);
+        if (currentInput === '') currentInput = '0';
+    }
+    // Delete operator
+    else if (operation !== null) {
+        operation = null;
+        currentInput = previousInput;
+        previousInput = '';
+    }
+    updateDisplay();
+}
+
 function updateDisplay() {
-    // Format the display based on current state
-    if (operation != null) {
+    if (operation !== null) {
         resultDisplay.textContent = `${previousInput} ${operation} ${currentInput}`;
     } else {
         resultDisplay.textContent = currentInput;
     }
-    
-    // Limit display length to prevent overflow
+
     if (resultDisplay.textContent.length > 15) {
         resultDisplay.textContent = parseFloat(currentInput).toExponential(6);
     }
 }
 
+// ---------------- KEYBOARD SUPPORT ----------------
 
-// KeyBoard Handling function
-function handleKey(e){
+function handleKey(e) {
     const key = e.key;
-    if(key>='0' && key<="9") {
+
+    if (key >= '0' && key <= '9') {
         appendNumber(key);
         updateDisplay();
         return;
     }
-    if(key==='.'){
-        appendDecimal(key);
+
+    if (key === '.') {
+        appendDecimal();
         updateDisplay();
         return;
     }
-    if(['+', '-', '*', '/'].includes(key)){
+
+    if (['+', '-', '*', '/'].includes(key)) {
         chooseOperation(key === '*' ? 'x' : key);
-        previousInput=currentInput;
+        previousInput = currentInput;
         currentInput = '';
         updateDisplay();
         return;
     }
-    if(key==='Enter' || key === '='){
+
+    if (key === 'Enter' || key === '=') {
         calculateResult();
-        updateDisplay();
         return;
     }
-    if(key==='Backspace' || key=="Delete"){
-        currentInput = currentInput.slice(0, -1);
-        updateDisplay();
+
+    if (key === 'Backspace' || key === 'Delete') {
+        handleDelete();
         return;
     }
-    if(key=="Escape" || key.toLowerCase()==='c'){
+
+    if (key === 'Escape' || key.toLowerCase() === 'c') {
         clearCalculator();
-        updateDisplay();
         return;
     }
 }
-// calling keyboard handling function
+
 document.addEventListener("keydown", handleKey);
